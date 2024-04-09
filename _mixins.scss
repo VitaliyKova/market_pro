@@ -1,0 +1,15 @@
+@mixin display-flex($flex, $flex-dir, $wrap, $jc, $ai){
+    display: $flex;
+    flex-direction: $flex-dir;
+    justify-content: $jc;
+    flex-wrap: $wrap;
+    align-items: $ai;
+}
+
+@mixin font-style($fs,$lh,$fw,$ls,$color){
+    font-size: $fs;
+    line-height: $lh;
+    font-weight: $fw;
+    letter-spacing: $ls;
+    color: $color;
+}
