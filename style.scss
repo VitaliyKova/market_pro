@@ -82,7 +82,6 @@ body {
       transition: all $transition-time;
 
       &:hover {
-        transform: scale($scale-hover);
         color: $hover-color-ping-buttons;
       }
 
@@ -119,10 +118,6 @@ body {
     border: 1px solid $color-border;
     border-radius: 0px 3px 3px 0px;
     transition: all $transition-time;
-
-    &:hover {
-      transform: scale($scale-hover);
-    }
   }
 
   &__search_icon {
@@ -146,7 +141,6 @@ body {
 
   &__basket:hover {
     fill: $hover-color-ping-buttons;
-    transform: scale($scale-hover);
   }
 
   &__heading_button {
@@ -178,7 +172,6 @@ body {
 
   &__linc:hover {
     color: $hover-color-ping-buttons;
-    transform: scale($scale-hover);
   }
 }
 
@@ -368,15 +361,7 @@ body {
     @include font-style(16px, 16px, 700, 0.025em, #fff);
     padding: 10px 12px;
     max-width: 212px;
-    background-color: $bg-colors-buttons;
     transition: all $transition-time;
-
-    &:hover {
-      background: $hover-bg-ping-buttons;
-      color: $hover-color-ping-buttons;
-      outline: 1px $hover-color-border solid;
-      transform: scale(1.05);
-    }
 
     &--right::after {
       content: "\2192";
@@ -447,14 +432,212 @@ body {
   }
 }
 
-.subscribe{
+.subscribe {
   background-image: url("./img/subscribe_bg.png");
   margin-bottom: 100px;
   height: 438px;
   background-repeat: no-repeat;
   background-size: cover;
 
-  &__box{
+  &__box {
     @include display-flex(flex, row, nowrap, center, center);
+
+    height: 100%;
+  }
+
+  &__left {
+    @include display-flex(flex, row, wrap, start, start);
+    gap: 28px;
+    max-width: 50%;
+    padding-top: 111px;
+    height: 438px;
+    border-right: 1px solid #fff;
+    box-sizing: border-box;
+
+    &_about {
+      max-width: 68%;
+    }
+
+    &_text {
+      padding-bottom: 19px;
+      @include font-style(16px, 26px, 400, 0.025em, #222224);
+      font-style: italic;
+    }
+
+    &_name {
+      @include font-style(16px, 16px, 700, 0.025em, $color-text);
+    }
+
+    &_adress {
+      @include font-style(12px, 12px, 400, 0.025em, #222224);
+      
+    }
+
+    &_slider {
+      margin-top: 41px;
+      margin-left: 51px;
+      height: 4px;
+      width: 38px;
+      background-color: $color-text;
+      position: relative;
+
+      &--left::after {
+        content: "";
+        display: block;
+        height: 4px;
+        width: 38px;
+        background-color: #d6d6d6;
+        position: absolute;
+        left: 51px;
+      }
+
+      &--right::before{
+        content: "";
+        display: block;
+        height: 4px;
+        width: 38px;
+        background-color: #d6d6d6;
+        position: absolute;
+        right: 51px;
+      }
+    }
+  }
+  &__right{
+    box-sizing: border-box;
+    height: 438px;
+    padding-top: 148px;
+    margin-left: 92px;
+    @include display-flex(flex, column, wrap, start,center);
+
+    &_box{
+      @include display-flex(flex, column, wrap, start,center);
+      gap: 10px;
+    }
+
+    &_title{
+      text-transform: uppercase;
+      @include font-style(24px, 24px, 700, 0.025em, #222224);
+    }
+
+    &_subtitle{
+      text-transform: uppercase;
+      @include font-style(14px, 14px, 400, 0.025em, #222224);
+      margin-bottom:35px;
+    }
+
+    &_form{
+      display: flex;
+    }
+
+    &_email{
+      width: 334px;
+      box-sizing: border-box;
+      padding-left: 28px;
+      height: 46px;
+      border-radius: 23px 0 0 23px;
+      background-color: #e1e1e1;
+      border: none;
+
+      &::placeholder{
+        font-family: $font-family !important;
+        opacity: 0.67;
+        @include font-style(14px, 14px, 400, 0.025em, #222224);
+      }
+    }
+
+    &_button{
+      @include font-style(14px, 14px, 400, 0.025em, #fff);
+      height: 46px;
+      border-radius: 0 23px 23px 0;
+    }
   }
 }
+
+.footer {
+  margin-top: 109px;
+  
+  &-box{
+    @include display-flex(flex, row, wrap, space-between, center);
+    height: 270px;
+  }
+
+  &-logo{
+    max-width: 43%;
+    @include display-flex(flex, column, wrap, start, start);
+    gap: 24px;
+  }
+
+  &-logo-title{
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
+
+  &-text{
+    @include font-style(14px, 24px, 300, 0.025em, #898989);
+    padding-right: 64px;
+  }
+
+  &-company, &-information,  &-category {
+    height: 100%;
+    @include display-flex(flex, column, wrap, start, start);
+    width: 19%
+  }
+
+  &-title{
+    @include font-style(18px, 18px, 700, 0.025em, $color-text);
+    text-transform: uppercase;
+    margin-bottom: 60px;
+  }
+
+  &-links{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    list-style-type: none;
+    width: 100%;
+  }
+
+  &-link{
+    display: block;
+    width: 100%;
+    transition: color $transition-time;
+
+    &:hover{
+      color: $color-text;
+    }
+  }
+
+  &-grey{
+    margin-top: 89px;
+    background: #e6e6e6;
+    padding: 24px 0;
+  }
+
+  &-grey-box{
+    @include display-flex(flex, row, wrap, space-between, center);
+  }
+
+  &-box-social{
+    @include display-flex(flex, row, nowrap, center, center);
+    gap:8px;
+  }
+
+  &-icon{
+    text-align: center;
+    padding-top: 8px;
+    color: #b2b2b2;
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+    background-color: #fff;
+    transition: all $transition-time;
+
+    &:hover{
+      color: #fff;
+      background-color: $color-text;
+    }
+  }
+}
+
+
