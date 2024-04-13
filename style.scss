@@ -70,6 +70,25 @@ body {
   }
 
   &__details {
+    position: relative;
+
+    &:not([open]) .header__details_heading::after {
+      content: "\25B6";
+      font-size: 10px;
+      margin-left: 5px;
+    }
+
+    &[open] .header__details_heading::after{
+      color: $color-text;
+      content: "\25BC";
+      font-size: 10px;
+      margin-left: 4px;
+    }
+
+    &[open] .header__details_heading{
+      color: $color-text;
+    }
+
     &_heading {
       border: 1px solid $color-border;
       border-radius: 3px 0px 0px 3px;
@@ -85,14 +104,39 @@ body {
         color: $hover-color-ping-buttons;
       }
 
-      &::after {
-        content: "\25BC";
-        font-size: 10px;
-        margin-left: 5px;
-      }
-      &::after:hover {
-        color: $hover-color-ping-buttons;
-      }
+      // &[close]::after {
+      //   content: "\25BC";
+      //   font-size: 10px;
+      //   margin-left: 5px;
+      // }
+
+      // &::after:hover {
+      //   color: $hover-color-ping-buttons;
+      // }
+    }
+  }
+
+  &-menu{
+
+    &_browse.mega-menu {
+      display: block;
+      max-width: 262px;
+      position: absolute;
+      top: 38px;
+      z-index: 9;
+    }
+
+    &_browse.mega-menu::before{
+      display: none;
+    }
+
+    &_items.mega-menu__items{
+      display: flex;
+      flex-direction: column;
+    }
+
+    &_item.mega-menu__item-flex{
+      max-width: 100%;
     }
   }
 
@@ -163,25 +207,24 @@ body {
     gap: 5px;
   }
 
-  &__list{
+  &__list {
     list-style-type: none;
     position: relative;
 
-    &:hover .nav__linc{
+    &:hover .nav__linc {
       color: $color-text;
     }
 
-    &:hover .mega-menu{
+    &:hover .mega-menu {
       display: block;
-      opacity: 1;
     }
 
-    &--last:hover .mega-menu{
+    &--last:hover .mega-menu {
       right: 0;
       left: auto;
     }
 
-    &--last:hover .mega-menu::before{
+    &--last:hover .mega-menu::before {
       right: 50px;
       left: auto;
     }
@@ -189,7 +232,7 @@ body {
 
   &__linc {
     display: block;
-    padding:0 20px 12px;
+    padding: 0 20px 12px;
     box-sizing: border-box;
     text-transform: uppercase;
     @include font-style(14px, 26px, 700, 0, #222222);
@@ -197,87 +240,86 @@ body {
   }
 }
 
-.mega-menu{
+.mega-menu {
   max-width: 846px;
   box-sizing: border-box;
   position: absolute;
   top: 35px;
   background-color: $bg-collor;
   padding: 21px 25px;
-  box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.15);
+  box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.15);
   border: 1px solid #d6d6d6;
   display: none;
 
-  &::before{
+  &::before {
     content: "";
     display: block;
     padding: 7px;
     position: absolute;
     transform: rotate(45deg);
-    top:-9px;
+    top: -9px;
     left: 28px;
     background-color: $bg-collor;
     border-left: 1px solid #d6d6d6;
     border-top: 1px solid #d6d6d6;
   }
 
-  &--left .mega-menu::before{
+  &--left .mega-menu::before {
     right: 50px;
     left: auto;
   }
-  
-  &__title{
-    @include font-style(14px,14px,700,0.025em, $color-menu-title);
+
+  &__title {
+    @include font-style(14px, 14px, 700, 0.025em, $color-menu-title);
     text-transform: uppercase;
     padding-bottom: 5px;
     border-bottom: 1px solid #e8e8e8;
   }
 
-  &__items{
+  &__items {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, .5fr);
-    gap:31px;
+    grid-template-rows: repeat(2, 0.5fr);
+    gap: 31px;
   }
 
-  &__item-flex{
+  &__item-flex {
     width: 235px;
     display: flex;
     flex-direction: column;
     gap: 12px;
   }
 
-  &__item1{
+  &__item1 {
     grid-row: 1/3;
-    grid-column: 1/2; 
+    grid-column: 1/2;
   }
 
-  &__item2{
+  &__item2 {
     grid-row: 1/2;
     grid-column: 2/3;
   }
 
-  &__item3{
+  &__item3 {
     grid-row: 1/2;
     grid-column: 3/4;
   }
 
-  &__item4{
+  &__item4 {
     grid-row: 2/3;
     grid-column: 2/3;
   }
 
-  &__item5{
+  &__item5 {
     grid-row: 2/3;
     grid-column: 3/4;
     position: relative;
 
-    &-img{
+    &-img {
       max-width: 235px;
-      box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.15);
-      
+      box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.15);
 
-      &--supersale{
+      &--supersale {
         @include font-style(22px, 22px, 900, 0.025em, #fff);
         position: absolute;
         text-transform: uppercase;
@@ -285,16 +327,16 @@ body {
         max-width: 35%;
         right: 0px;
         bottom: 0px;
-        background-color: #22222293
+        background-color: #22222293;
       }
     }
   }
 
-  &__link{
+  &__link {
     @include font-style(14px, 14px, 400, 0.025em, $color-menu-text);
     transition: all $transition-time;
 
-    &:hover{
+    &:hover {
       color: $color-text;
     }
   }
@@ -595,7 +637,6 @@ body {
 
     &_adress {
       @include font-style(12px, 12px, 400, 0.025em, #222224);
-      
     }
 
     &_slider {
@@ -616,7 +657,7 @@ body {
         left: 51px;
       }
 
-      &--right::before{
+      &--right::before {
         content: "";
         display: block;
         height: 4px;
@@ -627,34 +668,34 @@ body {
       }
     }
   }
-  &__right{
+  &__right {
     box-sizing: border-box;
     height: 438px;
     padding-top: 148px;
     margin-left: 92px;
-    @include display-flex(flex, column, wrap, start,center);
+    @include display-flex(flex, column, wrap, start, center);
 
-    &_box{
-      @include display-flex(flex, column, wrap, start,center);
+    &_box {
+      @include display-flex(flex, column, wrap, start, center);
       gap: 10px;
     }
 
-    &_title{
+    &_title {
       text-transform: uppercase;
       @include font-style(24px, 24px, 700, 0.025em, #222224);
     }
 
-    &_subtitle{
+    &_subtitle {
       text-transform: uppercase;
       @include font-style(14px, 14px, 400, 0.025em, #222224);
-      margin-bottom:35px;
+      margin-bottom: 35px;
     }
 
-    &_form{
+    &_form {
       display: flex;
     }
 
-    &_email{
+    &_email {
       width: 334px;
       box-sizing: border-box;
       padding-left: 28px;
@@ -663,14 +704,14 @@ body {
       background-color: #e1e1e1;
       border: none;
 
-      &::placeholder{
+      &::placeholder {
         font-family: $font-family !important;
         opacity: 0.67;
         @include font-style(14px, 14px, 400, 0.025em, #222224);
       }
     }
 
-    &_button{
+    &_button {
       @include font-style(14px, 14px, 400, 0.025em, #fff);
       height: 46px;
       border-radius: 0 23px 23px 0;
@@ -680,42 +721,44 @@ body {
 
 .footer {
   margin-top: 109px;
-  
-  &-box{
+
+  &-box {
     @include display-flex(flex, row, wrap, space-between, center);
     height: 270px;
   }
 
-  &-logo{
+  &-logo {
     max-width: 43%;
     @include display-flex(flex, column, wrap, start, start);
     gap: 24px;
   }
 
-  &-logo-title{
+  &-logo-title {
     display: flex;
     align-items: center;
     gap: 13px;
   }
 
-  &-text{
+  &-text {
     @include font-style(14px, 24px, 300, 0.025em, #898989);
     padding-right: 64px;
   }
 
-  &-company, &-information,  &-category {
+  &-company,
+  &-information,
+  &-category {
     height: 100%;
     @include display-flex(flex, column, wrap, start, start);
-    width: 19%
+    width: 19%;
   }
 
-  &-title{
+  &-title {
     @include font-style(18px, 18px, 700, 0.025em, $color-text);
     text-transform: uppercase;
     margin-bottom: 60px;
   }
 
-  &-links{
+  &-links {
     display: flex;
     flex-direction: column;
     gap: 18px;
@@ -723,32 +766,32 @@ body {
     width: 100%;
   }
 
-  &-link{
+  &-link {
     display: block;
     width: 100%;
     transition: color $transition-time;
 
-    &:hover{
+    &:hover {
       color: $color-text;
     }
   }
 
-  &-grey{
+  &-grey {
     margin-top: 89px;
     background: #e6e6e6;
     padding: 24px 0;
   }
 
-  &-grey-box{
+  &-grey-box {
     @include display-flex(flex, row, wrap, space-between, center);
   }
 
-  &-box-social{
+  &-box-social {
     @include display-flex(flex, row, nowrap, center, center);
-    gap:8px;
+    gap: 8px;
   }
 
-  &-icon{
+  &-icon {
     text-align: center;
     padding-top: 8px;
     color: #b2b2b2;
@@ -758,11 +801,9 @@ body {
     background-color: #fff;
     transition: all $transition-time;
 
-    &:hover{
+    &:hover {
       color: #fff;
       background-color: $color-text;
     }
   }
 }
-
-
