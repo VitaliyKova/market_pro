@@ -39,7 +39,7 @@ body {
 .header {
   margin-bottom: 12px;
   background-color: $bg-collor;
-  padding: 25px 0;
+  padding-top: 25px;
   border: 1px solid #ececec;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.17);
 
@@ -51,6 +51,7 @@ body {
     @include display-flex(flex, row, wrap, start, center);
     gap: 13px;
     padding-right: 3.24%;
+    padding-bottom: 25px;
   }
 
   &__title {
@@ -66,6 +67,7 @@ body {
   &__search {
     max-width: 80%;
     flex-grow: 3;
+    padding-bottom: 25px;
     @include display-flex(flex, row, wrap, start, center);
   }
 
@@ -176,18 +178,110 @@ body {
 
   &__right {
     @include display-flex(flex, row, wrap, start, center);
-    gap: 26px;
+  }
+
+  &__cart{
+    padding-bottom:25px;
+    padding-right: 26px;
+    position: relative;
+  }
+
+  &__cart:hover .header__cart-menu{
+    display: block;
+  }
+
+  &__cart:hover .header__basket{
+    fill: $hover-color-ping-buttons;
   }
 
   &__basket {
     transition: all $transition-time;
   }
 
-  &__basket:hover {
-    fill: $hover-color-ping-buttons;
+  &__cart-menu{
+    position: absolute;
+    box-sizing: border-box;
+    top: 50px;
+    width: 262px;
+    height: 440px;
+    background-color: $bg-collor;
+    box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.15);
+    padding: 20px 15px;
+    display: none;
+
+    &_item{
+      @include display-flex(flex,row,nowrap,start,center);
+      padding: 0 3px 16px 3px;
+      border-bottom: 1px solid rgba(237,237,237,0.74);
+      gap: 14px;
+      margin-bottom: 16px;
+
+      &:hover{
+        box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.15);
+      }
+    }
+
+    &_info{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    &_title{
+      @include font-style(12px, 12px, 900, 0, #222222);
+      text-transform: uppercase;
+    }
+
+    &_stars{
+      max-width: 55px;
+    }
+
+    &_price{
+      @include font-style(12px,12px,700,0,$color-text);
+      text-transform: uppercase;
+    }
+
+    &_box{
+      flex-grow: 4;
+      padding-left: 55px;
+    }
+
+    &_total{
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+
+    &_text{
+      @include font-style(16px, 16px, 900, 0, #222222);
+      text-transform: uppercase;
+    }
+
+    &_buttons{
+      @include display-flex(flex, column, nowrap, center, center);
+      gap: 11px;
+    }
+
+    &_button{
+      width: 225px;
+      display: block;
+      padding: 19px 0 19px;
+      text-align: center;
+      border: 1px solid #eaeaea;
+      @include font-style(14px, 14px, 900, 0, #4a4a4a);
+      text-transform: uppercase;
+      transition: all $transition-time;
+
+      &:hover{
+        color: $color-text;
+        border-color: $color-text;
+      }
+    }
+
   }
 
   &__heading_button {
+    margin-bottom: 25px;
     &::after {
       content: "\25BC";
       font-size: 12px;
