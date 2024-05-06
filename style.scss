@@ -4,6 +4,7 @@
 * {
   margin: 0;
   padding: 0;
+  outline: none;
 }
 
 a {
@@ -33,6 +34,37 @@ body {
     color: $hover-color-ping-buttons;
     outline: 1px $hover-color-border solid;
     transform: scale(1.05);
+  }
+}
+
+.details {
+  &__summary {
+    list-style-type: none;
+    transition: all $transition-time;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:hover {
+      color: $hover-color-ping-buttons;
+    }
+  }
+
+  &:not([open]) .details__summary::after {
+    content: "\25B6";
+    padding-left: 7px;
+    font-size: 10px;
+  }
+
+  &[open] .details__summary::after {
+    color: $color-text;
+    content: "\25BC";
+    font-size: 10px;
+    padding-left: 5px;
+  }
+
+  &[open] .details__summary {
+    color: $color-text;
   }
 }
 
@@ -69,110 +101,71 @@ body {
     flex-grow: 3;
     padding-bottom: 25px;
     @include display-flex(flex, row, wrap, start, center);
+
+    &_form {
+      display: flex;
+    }
+
+    &_fields {
+      width: 263px;
+      height: 36px;
+      padding-left: 16px;
+      background-color: $bg-collor;
+      border: 1px solid $color-border;
+
+      &::placeholder {
+        font-family: $font-family !important;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &_button {
+      height: 38px;
+      background-color: $bg-collor;
+      border: 1px solid $color-border;
+      border-radius: 0px 3px 3px 0px;
+      transition: all $transition-time;
+    }
+
+    &_icon {
+      color: #a4a4a4;
+      border: 12px solid transparent;
+      transition: all $transition-time;
+
+      &:hover {
+        color: $hover-color-border;
+      }
+    }
   }
 
   &__details {
     position: relative;
-
-    &:not([open]) .header__details_heading::after {
-      content: "\25B6";
-      font-size: 10px;
-      margin-left: 5px;
-    }
-
-    &[open] .header__details_heading::after{
-      color: $color-text;
-      content: "\25BC";
-      font-size: 10px;
-      margin-left: 4px;
-    }
-
-    &[open] .header__details_heading{
-      color: $color-text;
-    }
-
-    &_heading {
-      border: 1px solid $color-border;
-      border-radius: 3px 0px 0px 3px;
-      padding: 0 0.8em;
-      height: 36px;
-      background-color: $bg-collor-details;
-      background-image: linear-gradient(180deg, #f9f9f9 0%, #f5f5f5 100%);
-      @include font-style(14px, 32px, 300, 0.025em, #222222);
-      list-style-type: none;
-      transition: all $transition-time;
-
-      &:hover {
-        color: $hover-color-ping-buttons;
-      }
-
-      // &[close]::after {
-      //   content: "\25BC";
-      //   font-size: 10px;
-      //   margin-left: 5px;
-      // }
-
-      // &::after:hover {
-      //   color: $hover-color-ping-buttons;
-      // }
-    }
   }
 
-  &-menu{
+  &__summary-heading {
+    border: 1px solid $color-border;
+    border-radius: 3px 0px 0px 3px;
+    padding: 0 0.8em;
+    height: 36px;
+    background-color: $bg-collor-details;
+    background-image: linear-gradient(180deg, #f9f9f9 0%, #f5f5f5 100%);
+    @include font-style(14px, 32px, 300, 0.025em, #222222);
+  }
 
-    &_browse.mega-menu {
-      display: block;
-      max-width: 262px;
-      position: absolute;
-      top: 38px;
-      z-index: 9;
-    }
+  &-menu {
+    position: absolute;
+    top: 40px;
 
-    &_browse.mega-menu::before{
-      display: none;
-    }
-
-    &_items.mega-menu__items{
+    &_items.mega-menu__items {
       display: flex;
       flex-direction: column;
     }
 
-    &_item.mega-menu__item-flex{
+    &_item.mega-menu__item-flex {
       max-width: 100%;
-    }
-  }
-
-  &__search_form {
-    display: flex;
-  }
-
-  &__search_fields {
-    width: 263px;
-    height: 36px;
-    padding-left: 16px;
-    background-color: $bg-collor;
-    border: 1px solid $color-border;
-
-    &::placeholder {
-      font-family: $font-family !important;
-    }
-  }
-
-  &__search_button {
-    height: 38px;
-    background-color: $bg-collor;
-    border: 1px solid $color-border;
-    border-radius: 0px 3px 3px 0px;
-    transition: all $transition-time;
-  }
-
-  &__search_icon {
-    color: #a4a4a4;
-    border: 12px solid transparent;
-    transition: all $transition-time;
-
-    &:hover {
-      color: $hover-color-border;
     }
   }
 
@@ -180,17 +173,17 @@ body {
     @include display-flex(flex, row, wrap, start, center);
   }
 
-  &__cart{
-    padding-bottom:25px;
+  &__cart {
+    padding-bottom: 25px;
     padding-right: 26px;
     position: relative;
   }
 
-  &__cart:hover .header__cart-menu{
+  &__cart:hover .header__cart-menu {
     display: block;
   }
 
-  &__cart:hover .header__basket{
+  &__cart:hover .header__basket {
     fill: $hover-color-ping-buttons;
   }
 
@@ -198,7 +191,7 @@ body {
     transition: all $transition-time;
   }
 
-  &__cart-menu{
+  &__cart-menu {
     position: absolute;
     box-sizing: border-box;
     top: 50px;
@@ -208,61 +201,62 @@ body {
     box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.15);
     padding: 20px 15px;
     display: none;
+    z-index: 1;
 
-    &_item{
-      @include display-flex(flex,row,nowrap,start,center);
+    &_item {
+      @include display-flex(flex, row, nowrap, start, center);
       padding: 0 3px 16px 3px;
-      border-bottom: 1px solid rgba(237,237,237,0.74);
+      border-bottom: 1px solid rgba(237, 237, 237, 0.74);
       gap: 14px;
       margin-bottom: 16px;
 
-      &:hover{
+      &:hover {
         box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.15);
       }
     }
 
-    &_info{
+    &_info {
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
 
-    &_title{
+    &_title {
       @include font-style(12px, 12px, 900, 0, #222222);
       text-transform: uppercase;
     }
 
-    &_stars{
+    &_stars {
       max-width: 55px;
     }
 
-    &_price{
-      @include font-style(12px,12px,700,0,$color-text);
+    &_price {
+      @include font-style(12px, 12px, 700, 0, $color-text);
       text-transform: uppercase;
     }
 
-    &_box{
+    &_box {
       flex-grow: 4;
       padding-left: 55px;
     }
 
-    &_total{
+    &_total {
       display: flex;
       justify-content: space-between;
       margin-bottom: 32px;
     }
 
-    &_text{
+    &_text {
       @include font-style(16px, 16px, 900, 0, #222222);
       text-transform: uppercase;
     }
 
-    &_buttons{
+    &_buttons {
       @include display-flex(flex, column, nowrap, center, center);
       gap: 11px;
     }
 
-    &_button{
+    &_button {
       width: 225px;
       display: block;
       padding: 19px 0 19px;
@@ -272,16 +266,16 @@ body {
       text-transform: uppercase;
       transition: all $transition-time;
 
-      &:hover{
+      &:hover {
         color: $color-text;
         border-color: $color-text;
       }
     }
-
   }
 
   &__heading_button {
     margin-bottom: 25px;
+    border-radius: 3px;
     &::after {
       content: "\25BC";
       font-size: 12px;
@@ -295,6 +289,11 @@ body {
 
 .nav {
   background-color: $bg-collor;
+
+  &__mega-menu {
+    position: absolute;
+    top: 35px;
+  }
 
   &__lincs {
     @include display-flex(flex, row, wrap, center, center);
@@ -337,13 +336,10 @@ body {
 .mega-menu {
   max-width: 846px;
   box-sizing: border-box;
-  position: absolute;
-  top: 35px;
   background-color: $bg-collor;
   padding: 21px 25px;
-  box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.15);
-  border: 1px solid #d6d6d6;
   display: none;
+  z-index: 3;
 
   &::before {
     content: "";
@@ -356,6 +352,20 @@ body {
     background-color: $bg-collor;
     border-left: 1px solid #d6d6d6;
     border-top: 1px solid #d6d6d6;
+  }
+
+  &_shadow{
+    box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.15);
+    border: 1px solid #d6d6d6;
+  }
+
+  &_small {
+    display: block;
+    max-width: 262px;
+    z-index: 1;
+    &::before {
+      content: none;
+    }
   }
 
   &--left .mega-menu::before {
@@ -595,10 +605,14 @@ body {
         border: 1px solid #ffffff;
         opacity: 0;
         transition: all $transition-time;
+
+        &:hover {
+          box-shadow: 0px 0px 17px -4px #ffff;
+        }
       }
 
       &_text {
-        @include font-style(13px, 13px, 700, 0, #ffffff);
+        @include font-style(13px, 13px, 700, 0, hsl(0, 0%, 100%));
       }
     }
   }
@@ -901,3 +915,5 @@ body {
     }
   }
 }
+
+@import "product_style";

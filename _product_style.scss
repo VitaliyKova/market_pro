@@ -1,0 +1,156 @@
+@import "mixins";
+@import "temp";
+
+.nav__linc--border-color {
+  border-bottom: 2px solid $color-text;
+}
+
+.top {
+  background: $bg-color_top-product;
+  padding: 65px 0 65px;
+  margin-bottom: 71px;
+
+  &_box {
+    @include display-flex(flex, row, nowrap, space-between, center);
+  }
+
+  &_title {
+    @include font-style(24px, 24px, 900, 0, $color-text);
+    text-transform: uppercase;
+  }
+
+  &_path {
+    max-width: 50%;
+    @include display-flex(flex, row, nowrap, center, center);
+
+    &-item {
+      @include display-flex(flex, row, nowrap, center, center);
+      & a.top_path-link:last-child {
+        color: $color-text;
+        font-weight: 700;
+      }
+    }
+
+    &-link {
+      display: block;
+      padding-right: 3px;
+      @include font-style(14px, 14px, 500, 0, #636363);
+      text-transform: uppercase;
+
+      &:not(:last-child):after {
+        content: "/";
+        padding-left: 3px;
+      }
+    }
+  }
+}
+
+.catalog {
+  &-box {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-left {
+    width: 21.3%;
+    margin-right: 49px;
+  }
+
+  &-details {
+    width: 243px;
+    margin-bottom: 18px;
+  }
+
+  &-summary {
+    @include font-style(14px, 14px, 700, 0, #6f6e6e);
+    height: 37px;
+    text-transform: uppercase;
+    padding-left: 11px;
+    border-left: 5px solid $color-text;
+    border-bottom: 1px solid #ebebeb;
+  }
+
+  &-menu {
+    padding: 16px;
+  }
+
+  &-items {
+    gap: 25px;
+  }
+
+  &-right {
+    max-width: 73.7%;
+  }
+
+  &-filter{
+    @include display-flex(flex,row,wrap,start,start);
+    margin-bottom: 41px;
+    gap: 27px;
+
+    &-heading{
+      margin-bottom: 25px;
+      @include font-style(14px,14px,700,0,#6f6e6e);
+      text-transform: uppercase;
+    }
+  }
+
+  &-trending{
+    width: 262px;
+
+    &-elements{
+      list-style-type: none;
+      @include display-flex(flex,row,wrap,start,center);
+      row-gap: 8px;
+      max-width: 80%;
+    }
+
+    &-element{
+      @include font-style(14px,14px,400,0,#6f6e6e);
+      transition: $transition-time;
+      &:not(:last-child):after {
+        content: "|";
+        padding-left: 9px;
+        padding-right: 9px;
+        color: #dfdfdf;
+      }
+      &:hover{
+        color: $color-text;
+      }
+    }
+  }
+
+  &-size{
+    width: 262px;
+
+    &-checkbox{
+      margin-right: 8px;
+    }
+  }
+
+  &-form{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    row-gap: 8px;
+
+    &-text{
+      @include font-style(14px,14px,400,0,#6f6e6e);
+      text-transform: uppercase;
+      transition: $transition-time;
+      &:hover{
+        color: $color-text;
+      }
+    }
+  }
+
+  &-price{
+    width: 262px;
+  }
+
+  
+
+ 
+
+  
+
+
+}
